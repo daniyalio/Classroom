@@ -28,7 +28,17 @@ router.get('/:id',(req,res)=>{
 })
 
 router.post('/',(req,res)=>{
-
+    const {make, model, year, price} = req.body;
+    
+    if(!make || !model || !year || !price) {
+        return res.status(400).send({ error: "Missing fields" });
+    }
+    
+    const newCar = {
+        id: cars.length + 1, make, model, year, price
+    };
+    cars.push(newCar);
+    res.status(201).json(newCar);
 })
 
 
