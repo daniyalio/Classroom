@@ -78,7 +78,7 @@ router.delete('/:id',(req,res)=>{
     const carIndex = cars.findIndex((car) => car.id === id);
     if (carIndex === -1) return res.status(404).send('Car not found');
     cars.splice(carIndex, 1);
-    res.status(204).json(cars[carIndex]);
+    res.status(204).send();
 })
 
 
