@@ -15,21 +15,21 @@ import routerProvider, {
   DocumentTitleHandler,
 } from "@refinedev/react-router";
 import { dataProvider } from "./providers/data";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
+import { ForgotPassword } from "./pages/forgot-password";
 import { ErrorComponent } from "./components/refine-ui/layout/error-component";
 import { Layout } from "./components/refine-ui/layout/layout";
 import { Header } from "./components/refine-ui/layout/header";
 import { useNotificationProvider } from "./components/refine-ui/notification/use-notification-provider";
 import { Toaster } from "./components/refine-ui/notification/toaster";
 import { ThemeProvider } from "./components/refine-ui/theme/theme-provider";
-import Dashboard from "@/pages/dashboard";
-import { Home } from "lucide-react";
 import "./App.css";
-
-/* 2: 10 */
 
 function App() {
   return (
     <BrowserRouter>
+      <GitHubBanner />
       <RefineKbarProvider>
         <ThemeProvider>
           <DevtoolsProvider>
@@ -40,24 +40,11 @@ function App() {
               options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
-                projectId: "GBUQlc-Ty6a2R-uCaXVJ",
+                projectId: "ToPqt1-xdCEPp-lmQm2H",
               }}
-              resources={[
-              {
-                name: 'dashboard',
-                list: '/',
-                meta: { label: 'Home', icon: <Home />}
-              }
-            ]}
             >
               <Routes>
-                <Route element={
-                  <Layout>
-                    <Outlet />
-                  </Layout>
-                }>
-                  <Route path="/" element={<Dashboard />} />
-                </Route>
+                <Route index element={<WelcomePage />} />
               </Routes>
               <Toaster />
               <RefineKbar />
